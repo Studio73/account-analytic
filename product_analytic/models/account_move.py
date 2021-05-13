@@ -19,7 +19,7 @@ class AccountMoveLine(models.Model):
     @api.onchange("product_id")
     def _onchange_product_id(self):
         res = super()._onchange_product_id()
-        inv_type = self.move_id.type
+        inv_type = self.move_id.move_type
         if self.product_id and inv_type:
             ana_accounts = (
                 self.product_id.product_tmpl_id._get_product_analytic_accounts()
